@@ -41,7 +41,7 @@ public class DataInitializer {
 
                 int hour = random.nextInt(24);
 
-                LocalDateTime departureDateTime = LocalDateTime.now()
+                LocalDateTime departureDateTime = LocalDateTime.now().plusDays(1)
                         .plusDays(random.nextInt(30))
                         .withHour(hour)
                         .withMinute(0)
