@@ -20,11 +20,9 @@ public class FlightService {
 
     public List<Flight> searchFlights(Long departureAirportId, Long arrivalAirportId, LocalDateTime departureDateTime, LocalDateTime returnDateTime) {
         if(returnDateTime == null) {
-            // Tek yönlü uçuş araması
             return flightRepository.findByDepartureAirportIdAndArrivalAirportIdAndDepartureDateTimeBetween(
                     departureAirportId, arrivalAirportId, departureDateTime, departureDateTime.plusDays(1));
         } else {
-            // Çift yönlü uçuş araması, dönüş tarihi dahil
             return flightRepository.findByDepartureAirportIdAndArrivalAirportIdAndDepartureDateTimeBetween(
                     departureAirportId, arrivalAirportId, departureDateTime, returnDateTime);
         }
