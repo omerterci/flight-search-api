@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class AirportController {
     }
 
     @PostMapping
-    public Airport createAirport(@RequestBody Airport airport) {
+    public Airport createAirport(@Valid @RequestBody Airport airport) {
         return airportService.saveAirport(airport);
     }
 
