@@ -23,6 +23,10 @@ Before you begin, ensure you have met the following requirements:
 * spring.datasource.username= username
 * spring.datasource.password= yourpassword
 
+# Data initalizer
+- Flight Search API uses a command-line runner defined in the DataInitializer configuration class.
+- This approach ensures that the application has a set of data to work with immediately after startup, facilitating immediate testing and interaction without manual data entry.
+ 
 # Running the Application
 
 - Clone the repository to your local machine.
