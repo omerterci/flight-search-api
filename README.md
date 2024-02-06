@@ -17,7 +17,7 @@ Before you begin, ensure you have met the following requirements:
 # Database Setup
 
 - Create a MySQL database named flight_search_db.
-- current username is root and password is 1212
+- Current username is root and password is : 1212
 - If you want Update the src/main/resources/application.properties file with your MySQL user and password:
 * spring.datasource.url=jdbc:mysql://localhost:3306/flight_search_db?useSSL=false&serverTimezone=UTC
 * spring.datasource.username= username
