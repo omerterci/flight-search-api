@@ -33,4 +33,10 @@ public class AirportService {
     public void deleteAirport(Long id) {
         airportRepository.deleteById(id);
     }
+
+    public List<Airport> findByCity(String city) {
+        return airportRepository.findByCity(city);
+    }
+
 }
+

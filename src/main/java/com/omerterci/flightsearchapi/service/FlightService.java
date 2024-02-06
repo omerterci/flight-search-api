@@ -5,7 +5,9 @@ import com.omerterci.flightsearchapi.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,4 +29,30 @@ public class FlightService {
                     departureAirportId, arrivalAirportId, departureDateTime, returnDateTime);
         }
     }
+
+    public List<Flight> findFlights(Long departureAirportId, Long arrivalAirportId, LocalDate departureDate, LocalDate returnDate) {
+        LocalDateTime startOfDepartureDay = departureDate.atStartOfDay();
+        LocalDateTime endOfDepartureDay = departureDate.plusDays(1).atStartOfDay();
+
+        List<Flight> flights = flightRepository.findByDepartureAirportIdAndArrivalAirportIdAndDepartureDateTimeBetween(
+                departureAirportId, arrivalAirportId, startOfDepartureDay, endOfDepartureDay);
+
+        if (returnDate != null) {
+            LocalDateTime startOfReturnDay = returnDate.atStartOfDay();
+            LocalDateTime endOfReturnDay = returnDate.plusDays(1).atStartOfDay();
+            List<Flight> returnFlights = flightRepository.findByDepartureAirportIdAndArrivalAirportIdAndDepartureDateTimeBetween(
+                    arrivalAirportId, departureAirportId, startOfReturnDay, endOfReturnDay);
+            flights.addAll(returnFlights);
+        }
+
+        return flights;
+    }
+    public Flight saveFlight(Flight flight) {
+        return flightRepository.save(flight);
+    }
+
+    public List<Flight> findAllFlights() {
+        return flightRepository.findAll();
+    }
+
 }

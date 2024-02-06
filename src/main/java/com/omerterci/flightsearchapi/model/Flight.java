@@ -22,6 +22,7 @@ public class Flight {
 
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime departureDateTime;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime returnDateTime;
     private Double price;
 

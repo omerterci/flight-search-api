@@ -36,12 +36,20 @@ public class AirportController {
         return "search";
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<Airport> getAirportById(@PathVariable Long id) {
         return airportService.findAirportById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/searchByCity")
+    public ResponseEntity<List<Airport>> searchAirportsByCity(@RequestParam String city) {
+        List<Airport> airports = airportService.findByCity(city);
+        if(airports.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(airports);
     }
 
     @DeleteMapping("/{id}")

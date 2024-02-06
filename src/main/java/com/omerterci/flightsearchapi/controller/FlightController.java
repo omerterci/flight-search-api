@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -24,13 +24,20 @@ public class FlightController {
         this.flightService = flightService;
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Flight>> searchFlights(
-            @RequestParam Long departureAirportId,
-            @RequestParam Long arrivalAirportId,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime departureDateTime,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime returnDateTime) {
-        List<Flight> flights = flightService.searchFlights(departureAirportId, arrivalAirportId, departureDateTime, returnDateTime);
+    @GetMapping
+    public ResponseEntity<List<Flight>> getAllFlights() {
+        List<Flight> flights = flightService.findAllFlights();
         return ResponseEntity.ok(flights);
     }
+
+    @GetMapping("/searchByDate")
+    public ResponseEntity<List<Flight>> searchFlightsByDate(
+            @RequestParam Long departureAirportId,
+            @RequestParam Long arrivalAirportId,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate returnDate) {
+        List<Flight> flights = flightService.findFlights(departureAirportId, arrivalAirportId, departureDate, returnDate);
+        return ResponseEntity.ok(flights);
+    }
+
 }
