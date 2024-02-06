@@ -1,5 +1,7 @@
 package com.omerterci.flightsearchapi.model;
-
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
@@ -14,16 +16,21 @@ public class Flight {
 
     @ManyToOne
     @JoinColumn(name = "departure_airport_id")
+    @NotNull(message = "Departure airport can't be null")
     private Airport departureAirport;
 
     @ManyToOne
     @JoinColumn(name = "arrival_airport_id")
+    @NotNull(message = "Arrival airport can't be null")
     private Airport arrivalAirport;
 
+    @FutureOrPresent(message = "Departure date and time must be in the future or present")
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime departureDateTime;
+    @FutureOrPresent(message = "Return date and time must be in the future or present")
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime returnDateTime;
+    @Positive(message = "Price must  positive")
     private Double price;
 
     public Flight() {
