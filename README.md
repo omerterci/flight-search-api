@@ -44,6 +44,8 @@ Before you begin, ensure you have met the following requirements:
 - Username: user
 - Password: userPassword
 - Once authenticated, you can explore the available API endpoints, try out operations, and view request and response details.
+- Explore endpoints: On the Swagger UI page, you'll see a list of all controllers and their endpoints. Click on any endpoint to expand it and see detailed information, including HTTP method, request parameters, and response format.
+- Try out endpoints: Click the "Try it out" button for an endpoint, fill in any required parameters, and click "Execute" to make a real request to the API. You'll see the request URL, response body, status code, and headers.
 
 # API Authentication
 
