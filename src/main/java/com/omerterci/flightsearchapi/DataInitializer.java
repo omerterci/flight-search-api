@@ -25,6 +25,12 @@ public class DataInitializer {
             }
 
             List<Airport> airports = airportService.findAllAirports();
+            if (airports.isEmpty()) {
+                // Listede havaalanı yoksa, bu durumu ele al
+                System.out.println("Havaalanı listesi boş. Mock uçuşlar eklenemiyor.");
+                return; // Metodu erken sonlandır
+            }
+
             Random random = new Random();
             for (int i = 0; i < 20; i++) {
                 Airport departureAirport = airports.get(random.nextInt(airports.size()));
@@ -49,7 +55,7 @@ public class DataInitializer {
                         .withSecond(0)
                         .withNano(0);
 
-                Double price = 100.0 + (1000.0 - 100.0) * random.nextInt(10);
+                Double price = 100.0 + (1000.0 - 100.0) * random.nextDouble(); // random.nextInt(10) yerine daha gerçekçi bir fiyat hesaplaması için random.nextDouble() kullanıldı
 
                 Flight flight = new Flight(departureAirport, arrivalAirport, departureDateTime, returnDateTime, price);
                 flightService.saveFlight(flight);
