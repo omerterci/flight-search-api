@@ -19,14 +19,11 @@ public class AirportRepositoryTest {
 
     @Test
     public void testFindByCity() {
-        // Given
         Airport airport = new Airport("TestCity");
         airportRepository.save(airport);
 
-        // When
         List<Airport> foundAirports = airportRepository.findByCity("TestCity");
 
-        // Then
         assertThat(foundAirports).hasSize(1);
         assertThat(foundAirports.get(0).getCity()).isEqualTo("TestCity");
     }

@@ -18,18 +18,15 @@ public class AirportServiceTest {
     private AirportRepository airportRepository;
 
     @Autowired
-    private AirportService airportService; // AirportService nesnesini Spring'den otomatik olarak enjekte et
+    private AirportService airportService;
 
     @Test
     public void testSaveAirport() {
-        // Given
         Airport airport = new Airport("TestCity");
         when(airportRepository.save(any(Airport.class))).thenReturn(airport);
 
-        // When
         Airport savedAirport = airportService.saveAirport(airport);
 
-        // Then
         verify(airportRepository).save(airport);
         assertThat(savedAirport.getCity()).isEqualTo("TestCity");
     }

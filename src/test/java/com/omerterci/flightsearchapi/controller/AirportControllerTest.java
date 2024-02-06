@@ -29,13 +29,13 @@ public class AirportControllerTest {
     private AirportService airportService;
 
     @Test
-    @WithMockUser // Bu satır test kullanıcısını simüle eder
+    @WithMockUser
     public void testGetAllAirports() throws Exception {
-        // Given
+
         Airport airport = new Airport("TestCity");
         given(airportService.findAllAirports()).willReturn(Collections.singletonList(airport));
 
-        // When & Then
+
         mockMvc.perform(get("/api/airports")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
