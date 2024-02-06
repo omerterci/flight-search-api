@@ -1,7 +1,7 @@
 # flight-search-api
 Backend API for a flight search application.
 
-#Flight Search API 
+# Flight Search API 
 Description
 The Flight Search API is a Spring Boot application designed to facilitate the searching and management of flight and airport information. It leverages Spring Data JPA for persistence, Spring Security for basic authentication, and SpringDoc OpenAPI for API documentation and interaction through Swagger UI.
 
