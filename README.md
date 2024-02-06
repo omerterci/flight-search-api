@@ -1,55 +1,55 @@
 # flight-search-api
 Backend API for a flight search application.
 
-Flight Search API 
+#Flight Search API 
 Description
 The Flight Search API is a Spring Boot application designed to facilitate the searching and management of flight and airport information. It leverages Spring Data JPA for persistence, Spring Security for basic authentication, and SpringDoc OpenAPI for API documentation and interaction through Swagger UI.
 
-Features
+# Features
 
-CRUD operations for managing airports and flights.
-Search functionality for flights based on departure and arrival airports, and date.
-Basic authentication for securing API endpoints.
-Automated API documentation with Swagger UI.
-Prerequisites
+- CRUD operations for managing airports and flights.
+- Search functionality for flights based on departure and arrival airports, and date.
+- Basic authentication for securing API endpoints.
+- Automated API documentation with Swagger UI.
+# Prerequisites
 Before you begin, ensure you have met the following requirements:
-Java JDK 17 or later installed.
-Maven for project dependency management and build.
-MySQL database installed and running.
+- Java JDK 17 or later installed.
+- Maven for project dependency management and build.
+- MySQL database installed and running.
 
-Database Setup
+# Database Setup
 
-Create a MySQL database named flight_search_db.
-current username is root and password is 1212
-If you want Update the src/main/resources/application.properties file with your MySQL user and password:
-spring.datasource.url=jdbc:mysql://localhost:3306/flight_search_db?useSSL=false&serverTimezone=UTC
-spring.datasource.username= username
-spring.datasource.password= yourpassword
+- Create a MySQL database named flight_search_db.
+- current username is root and password is 1212
+- If you want Update the src/main/resources/application.properties file with your MySQL user and password:
+* spring.datasource.url=jdbc:mysql://localhost:3306/flight_search_db?useSSL=false&serverTimezone=UTC
+* spring.datasource.username= username
+* spring.datasource.password= yourpassword
 
-Running the Application
+# Running the Application
 
-Clone the repository to your local machine.
-Navigate to the project directory and run the following command to build the project:
-mvn clean install
-To start the application, run:
-mvn spring-boot:run
-The application will be accessible at http://localhost:8080.
+- Clone the repository to your local machine.
+- Navigate to the project directory and run the following command to build the project:
+- mvn clean install
+- To start the application, run:
+- mvn spring-boot:run
+- The application will be accessible at http://localhost:8080.
 
-Using Swagger UI
+# Using Swagger UI
 
-The Flight Search API documentation is available through Swagger UI, which provides an interactive API interface.
-With the application running, visit http://localhost:8080/swagger-ui.html in your web browser.
-You will be prompted for a username and password. Use the following default credentials:
-Username: user
-Password: userPassword
-Once authenticated, you can explore the available API endpoints, try out operations, and view request and response details.
+- The Flight Search API documentation is available through Swagger UI, which provides an interactive API interface.
+- With the application running, visit http://localhost:8080/swagger-ui.html in your web browser.
+- You will be prompted for a username and password. Use the following default credentials:
+- Username: user
+- Password: userPassword
+- Once authenticated, you can explore the available API endpoints, try out operations, and view request and response details.
 
-API Authentication
+# API Authentication
 
-The API uses basic authentication to secure endpoints. Two users are configured by default:
-User: Access to /api/** endpoints with USER role.
-Username: user
-Password: userPassword
-Admin: Access to all endpoints with ADMIN role.
-Username: admin
-Password: adminPassword
+- The API uses basic authentication to secure endpoints. Two users are configured by default:
+- User: Access to /api/** endpoints with USER role.
+- Username: user
+- Password: userPassword
+- Admin: Access to all endpoints with ADMIN role.
+- Username: admin
+- Password: adminPassword
